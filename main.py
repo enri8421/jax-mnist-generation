@@ -82,11 +82,10 @@ build_image = build_generator(3, encoded_shapes, gtp_params.weights, vqvae_param
 
 
 for i in range(num_label_class):
-    print(i)
     image = build_image(90, i, image_size)
     plt.figure(figsize=(25,25))
     plt.imshow(image)
-    plt.savefig(f'generate_{i}.png')
+    plt.savefig(f'generated_digits/generate_{i}.png')
 
 
 
