@@ -1,0 +1,42 @@
+[project]
+name = "jax-mnist-generation"
+version = "0.1.0"
+description = "MNIST digit generation in JAX with VQ-VAE + GPT and classifier-guided diffusion."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "jax>=0.4,<1",
+    "flax>=0.12,<1",
+    "dm-haiku>=0.0.13,<1",
+    "optax>=0.2,<1",
+    "numpy>=2,<3",
+    "matplotlib>=3.9,<4",
+    "pillow>=10,<13",
+    "climage>=0.2,<1",
+]
+
+[dependency-groups]
+dev = [
+    "pyright==1.1.414",
+    "ruff==0.17.5",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+required-version = "==0.17.5"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["I"]
+
+[tool.ruff.format]
+line-ending = "lf"
+
+[tool.pyright]
+include = ["main.py", "models", "trainers", "utils", "guided_diffusion"]
+pythonVersion = "3.12"
+typeCheckingMode = "standard"
+reportUnnecessaryTypeIgnoreComment = true
