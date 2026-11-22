@@ -84,7 +84,8 @@ make experiments repeatable on the same backend; CPU and Metal results can diffe
 
 ## License and data
 
-[MIT](LICENSE) for the code · Enrico Bianchi.
+Code: [MIT](LICENSE) · Enrico Bianchi. Model weights and sample images: see the
+[asset licensing notes](docs/data-and-licenses.md#model-weights-and-images).
 
 MNIST is credited to Yann LeCun, Corinna Cortes and Christopher J. C. Burges.
 Its dataset terms are separate from the code license; see the
