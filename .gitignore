@@ -1,19 +1,5 @@
 .venv/
 __pycache__/
-*.py[cod]
 .ruff_cache/
-.pytest_cache/
 .DS_Store
-.env
-.env.*
-!.env.example
-
-# Downloaded data and generated checkpoints; keep loader source trackable.
 /data/
-/weights/
-/guided_diffusion/data/
-/guided_diffusion/weights/
-*.pkl
-*.pt
-*.pth
-*.ckpt

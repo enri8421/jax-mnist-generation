@@ -1,19 +1,24 @@
 [project]
 name = "jax-mnist-generation"
 version = "0.1.0"
-description = "MNIST digit generation in JAX with VQ-VAE + GPT and classifier-guided diffusion."
+description = "MNIST digit generation in JAX with residual VQ + Transformer and conditional diffusion."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12,<3.13"
 dependencies = [
-    "jax>=0.4,<1",
-    "flax>=0.12,<1",
-    "dm-haiku>=0.0.13,<1",
+    "jax>=0.12.0.1,<0.13",
+    "flax>=0.12.12,<0.13",
     "optax>=0.2,<1",
+    "pydantic>=2.12,<3",
+    "pydantic-settings>=2.12,<3",
     "numpy>=2,<3",
-    "matplotlib>=3.9,<4",
-    "pillow>=10,<13",
-    "climage>=0.2,<1",
+    "pillow>=13,<14",
+    "streamlit>=1.67,<2",
+]
+
+[project.optional-dependencies]
+metal = [
+    'jax-graft==0.0.5; sys_platform == "darwin" and platform_machine == "arm64"',
 ]
 
 [dependency-groups]
@@ -30,13 +35,13 @@ required-version = "==0.17.5"
 line-length = 100
 
 [tool.ruff.lint]
-select = ["I"]
+select = ["E4", "E7", "E9", "F", "I"]
 
 [tool.ruff.format]
 line-ending = "lf"
 
 [tool.pyright]
-include = ["main.py", "models", "trainers", "utils", "guided_diffusion"]
+include = ["models", "utils", "scripts", "tests", "train.py", "app.py"]
 pythonVersion = "3.12"
 typeCheckingMode = "standard"
 reportUnnecessaryTypeIgnoreComment = true

@@ -11,7 +11,6 @@ jobs:
     timeout-minutes: 10
     env:
       JAX_PLATFORMS: cpu
-      MPLBACKEND: Agg
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
@@ -19,7 +18,7 @@ jobs:
           version: "0.13.8"
       - run: uv python install
       - run: uv sync --locked
-      # Preserve the original code in this consolidation pass.
-      - run: uv run --locked ruff check --select E9,F63,F7,F82 .
-      - run: uv run --locked python -m compileall -q main.py models trainers utils guided_diffusion
-      - run: uv run --locked python -c "import flax, haiku, jax, optax; print(jax.devices())"
+      - run: uv run --locked ruff check .
+      - run: uv run --locked ruff format --check .
+      - run: uv run --locked pyright
+      - run: uv run --locked python -m unittest discover -s tests -v
